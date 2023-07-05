@@ -11,6 +11,8 @@ const getMyData = function () {
     .then((data) => {
       console.log(data)
       let row = document.querySelector("#library-shelf")
+      let buyButton = document.querySelectorAll(".buy")
+      let chart = document.getElementsByTagName("ul")
       data.forEach((book) => {
         let newCol = document.createElement("div")
         newCol.classList.add("col", "col-4")
@@ -39,8 +41,6 @@ const getMyData = function () {
           element.parentElement.parentElement.remove()
         })
       })
-      let buyButton = document.querySelectorAll(".buy")
-      let chart = document.querySelectorAll("ul")
       buyButton.forEach((element) => {
         element.addEventListener("click", function () {
           chart.appendChild(boughtBook)
