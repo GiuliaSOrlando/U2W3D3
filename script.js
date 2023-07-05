@@ -34,16 +34,16 @@ const getMyData = function () {
         let boughtBook = document.createElement("li")
         boughtBook.innerText = `${book.title}`
         console.log(boughtBook)
+        buyButton.forEach((element) => {
+          element.addEventListener("click", function () {
+            element.classList.add("to-chart")
+          })
+        })
       })
       let deleteButton = document.querySelectorAll(".remove")
       deleteButton.forEach((element) => {
         element.addEventListener("click", function () {
           element.parentElement.parentElement.remove()
-        })
-      })
-      buyButton.forEach((element) => {
-        element.addEventListener("click", function () {
-          chart.appendChild(boughtBook)
         })
       })
     })
