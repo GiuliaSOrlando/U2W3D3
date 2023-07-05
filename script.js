@@ -29,17 +29,21 @@ const getMyData = function () {
         </div>
         `
         row.appendChild(newCol)
-        let deleteButton = document.querySelectorAll(".remove")
-        deleteButton.forEach((element) => {
-          element.addEventListener("click", function () {
-            element.parentElement.parentElement.remove()
-          })
+        let boughtBook = document.createElement("li")
+        boughtBook.innerText = `${book.title}`
+        console.log(boughtBook)
+      })
+      let deleteButton = document.querySelectorAll(".remove")
+      deleteButton.forEach((element) => {
+        element.addEventListener("click", function () {
+          element.parentElement.parentElement.remove()
         })
-        let buyButton = document.querySelectorAll(".buy")
-        buyButton.forEach((element) => {
-          element.addEventListener("click", function () {
-            console.log(element)
-          })
+      })
+      let buyButton = document.querySelectorAll(".buy")
+      let chart = document.querySelectorAll("ul")
+      buyButton.forEach((element) => {
+        element.addEventListener("click", function () {
+          chart.appendChild(boughtBook)
         })
       })
     })
