@@ -2,18 +2,15 @@ const getMyData = function () {
   fetch("https://striveschool-api.herokuapp.com/books")
     .then((res) => {
       if (res.ok) {
-        console.log(res)
         return res.json()
       } else {
         throw new Error("Errore nella chiamata!")
       }
     })
     .then((data) => {
-      console.log(data)
       let row = document.querySelector("#library-shelf")
-      let buyButton = document.querySelectorAll(".buy")
-      let chart = document.getElementsByTagName("ul")
-      data.forEach((book) => {
+
+      data.forEach((book, i) => {
         let newCol = document.createElement("div")
         newCol.classList.add("col", "col-4")
         newCol.innerHTML = `
@@ -31,15 +28,16 @@ const getMyData = function () {
         </div>
         `
         row.appendChild(newCol)
-        let boughtBook = document.createElement("li")
-        boughtBook.innerText = `${book.title}`
-        console.log(boughtBook)
-        buyButton.forEach((element) => {
-          element.addEventListener("click", function () {
-            element.classList.add("to-chart")
-          })
+        let chart = document.getElementById("chart")
+        let buyButtonList = document.querySelectorAll(".buy")
+        let buyButton = buyButtonList[i]
+        buyButton.addEventListener("click", function () {
+          let boughtBook = document.createElement("li")
+          boughtBook.innerText = `${book.title} price: ${book.price} $`
+          chart.appendChild(boughtBook)
         })
       })
+
       let deleteButton = document.querySelectorAll(".remove")
       deleteButton.forEach((element) => {
         element.addEventListener("click", function () {
